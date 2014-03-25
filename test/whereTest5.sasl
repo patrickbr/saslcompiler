@@ -1,0 +1,5 @@
+def a x = b where b=c where c=d where d=e where e=x where x=y;y=23
+
+.
+
+a 2

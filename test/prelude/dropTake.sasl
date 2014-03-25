@@ -1,0 +1,20 @@
+def drop n l = if n<=0 then l				
+	else if l=nil then nil				
+	else drop (n-1) (tl l)		
+def take n l = if n=0 or l=nil then nil			
+	else x:take (n-1) xs where x = hd l;		
+				   xs = tl l
+				   
+def append l1 l2 = if l1=nil then l2			
+	else x:(append xs l2) where x = hd l1;		
+					xs = tl l1			   
+				   
+				   
+def list = [1,2,3,4,5,6,7,8,9,10]
+
+
+
+.
+
+
+append (take 4 list) (drop 4 list)

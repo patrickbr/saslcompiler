@@ -1,0 +1,8 @@
+def append l1 l2 = if l1=nil then l2			
+	else x:(append xs l2) where x = hd l1;		
+					xs = tl l1
+					
+					.
+					
+					
+append [1,2] [3,4] 

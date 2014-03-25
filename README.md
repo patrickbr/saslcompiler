@@ -1,4 +1,49 @@
-saslcompiler
+SASL Compiler
 ============
 
-SASL Compiler
+A compiler for SASL, a functional programming language developed in 1972 (http://en.wikipedia.org/wiki/SASL_(programming_language).
+
+Examples
+========
+
+Input
+-----
+5+4
+
+Output
+------
+9
+
+
+Input
+-----
+((a where a x=(b where b=x+(c where c=x))) 11)+1
+
+Output
+------
+23
+
+
+Input
+-----
+def take n l = if n=0 or l=nil then nil
+	else x:take (n-1) xs where x = hd l;
+				   xs = tl l
+def mod x y = (x - (x/y)*y)
+def primes = sieve (naturals 2)
+
+def sieve input = (hd input) : (sieve (removeFromList (tl input) (hd input)))
+
+def removeFromList list ele =if (mod (hd list) ele) = 0
+							then (removeFromList (tl list) ele)
+						else (hd list) : (removeFromList (tl list) ele)
+
+def	naturals x = x : (naturals (x+1))
+
+.
+
+take 50 primes
+
+Output
+------
+[2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97,101,103,107,109,113,127,131,137,139,149,151,157,163,167,173,179,181,191,193,197,199,211,223,227,229]

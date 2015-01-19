@@ -1,0 +1,5 @@
+def d=22
+
+.
+
+a + (a where a=1) where a=c;c=d

@@ -1,0 +1,5 @@
+def a x = if x>10 then 23 else a (x+1)
+
+.
+
+a 1

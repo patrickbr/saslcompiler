@@ -7,7 +7,7 @@
 
   <target name="javac" description="Compile java source to bytecode">
     <mkdir dir="build"/>
-    <javac srcdir="." includes="**" encoding="utf-8"
+    <javac srcdir="src" includes="**" encoding="utf-8"
         destdir="build"
         source="1.5" target="1.5" nowarn="true"
         debug="true" debuglevel="lines,vars,source">
@@ -23,6 +23,21 @@
         <attribute name="Main-Class" value="Main"/>
      </manifest>
     </jar>
+  </target>
+
+  <target name="junit" depends="build">
+    <junit printsummary="yes" haltonfailure="yes" showoutput="yes" >
+        <classpath>
+            <path refid="classpath"/>
+            <path location="build"/>
+        </classpath>
+        <formatter type="brief" usefile="false"/>
+        <formatter type="xml"/>
+
+        <batchtest fork="yes" todir=".">
+            <fileset dir="src" includes="**/*Tests.java" />
+        </batchtest>
+    </junit>
   </target>
 
   <target name="clean" description="Cleans this project">

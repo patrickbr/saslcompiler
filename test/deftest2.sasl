@@ -1,8 +1,0 @@
-def a=14
-def b=4
-def c=5
-
-def d = a+b+c
-.
-
-d

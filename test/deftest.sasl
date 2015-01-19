@@ -1,7 +1,0 @@
-def a=b
-def b=c
-def c=1
-
-. 
-
-a+22

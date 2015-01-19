@@ -1,8 +1,0 @@
-def a=b 1 where b x = x where x=e;e=p 1
-
-def p x= (x 2)*11 where x a=a
-
-.
-
-
-a+1

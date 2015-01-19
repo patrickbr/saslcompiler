@@ -24,7 +24,7 @@ public class Tests {
 	 * tests all basic operations
 	 */
 	@Test
-	public void baseTests() throws Exception {
+	public void testBaseTests() throws Exception {
 
 		assertEquals(testFile("test/deftest.sasl"),"23");
 		assertEquals(testFile("test/deftest2.sasl"),"23");

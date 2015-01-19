@@ -3,6 +3,29 @@ SASL Compiler
 
 A compiler for SASL, a functional programming language developed in 1972 (http://en.wikipedia.org/wiki/SASL_(programming_language).
 
+Usage
+=====
+
+Tests can be run with
+
+   ant tests
+
+Build can be run with
+
+   ant build
+
+A jar can be cuild with
+
+   ant jar
+
+Either start the sasl\_compiler.jar, type your programm and end it with CTRL+D _or_ pipe in the code like this:
+
+    cat myprogram | java -jar sasl_compiler.jar
+
+An example program outputting the first 5000 primes is included in this repo. Start it with
+
+    cat primesieve.sasl | java -jar sasl_compiler.jar
+
 Examples
 ========
 

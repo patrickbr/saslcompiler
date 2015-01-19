@@ -1,3 +1,4 @@
 *.class
 TEST-Tests.xml
 build.properties
+sasl_compiler.jar

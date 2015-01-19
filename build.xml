@@ -16,6 +16,8 @@
   </target>
 
   <target name="build" depends="javac" description="Build this project" />
+  <target name="test" depends="junit" description="Run JUNIT tests" />
+  <target name="tests" depends="junit" description="Run JUNIT tests" />
 
   <target name="jar" depends="build" description="Create a jar file">
     <jar destfile="sasl_compiler.jar" basedir="build">

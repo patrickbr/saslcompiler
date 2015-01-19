@@ -18,8 +18,6 @@ import exceptions.ReduceException;
 
 
 public class SASLCoordinator {
-
-
 	private SettingsReader s;
 	private PrintStream statusStream = System.out;
 	private PrintStream outputStream = System.out;
@@ -28,20 +26,14 @@ public class SASLCoordinator {
 	private InputStream lexStream=System.in;
 	private long zeit;
 
-
-
 	public SASLCoordinator(SettingsReader s) {
 		this.s=s;
 	}
 
-
 	/*
 	 * runs a sasl job using the given settings
 	 */
-
 	public void run() {
-
-
 		if (s.help()) {
 			msg(s.getHelp());
 			return;
@@ -50,7 +42,6 @@ public class SASLCoordinator {
 		msg(" - SASL Compiler 0.3 - \n\n");
 
 		try {
-
 			if (s.useSysIn()) {
 				lexStream=System.in;
 			}
@@ -70,7 +61,6 @@ public class SASLCoordinator {
 				msg("\n[sasl]: ");
 			}
 
-
 			addIncludes();
 
 			// lex
@@ -78,9 +68,9 @@ public class SASLCoordinator {
 			// parse
 			Node cTree = compile(parse(lex));
 
-
-			//DotPrinter dp = new DotPrinter(cTree);
-			//System.out.println(dp.print());
+                        // can be used to print the Tree to a dot file
+			// DotPrinter dp = new DotPrinter(cTree);
+			// System.out.println(dp.print());
 
 			// reduce
 			Node reduced = reduce(cTree);
@@ -91,8 +81,6 @@ public class SASLCoordinator {
 			msg("\n\n");
 			outputStream.close();
 			stopTimer();
-
-
 		}catch(ParseException e) {
 			errorStream.println(e.getMessage());
 		}catch(ReduceException e) {
@@ -132,7 +120,6 @@ public class SASLCoordinator {
 
 		Parser p = new Parser();
 		includes.addAll(p.parseInclude(lexInc));
-
 	}
 
 	private ArrayList<Definition> parse(Lexer lex) throws ParseException,
@@ -188,5 +175,4 @@ public class SASLCoordinator {
 			statusStream.print(msg);
 		}
 	}
-
 }

@@ -24,9 +24,7 @@ public class SettingsReader {
 	 * 
 	 */
 	private void evalArgs() {
-
 		if (pointer < args.length) {
-
 			// path to sasl file specified
 			if (args[pointer].equals("-f")) {
 				pointer ++;
@@ -38,14 +36,12 @@ public class SettingsReader {
 			// includes specified
 			if (args[pointer].equals("-html")) {
 				html=true;
-			
 			}
 			
 			// includes specified
 			if (args[pointer].equals("-I")) {
 				pointer ++;
 				includes=args[pointer].split(";");
-			
 			}
 
 			// output file path specified

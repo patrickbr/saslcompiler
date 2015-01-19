@@ -8,23 +8,15 @@ import nodes.*;
 
 
 public class Compiler {
-
-
 	private Node tree;
-
 	private ArrayList<Definition> definitions = new ArrayList<Definition>();
 
 	public Compiler(ArrayList<Definition> definitions) {
-
-
 		this.tree = definitions.get(definitions.size()-1).getNode();
 		this.definitions=definitions;
-
 	}
 
 	public Node getCompiledTree() {
-
-
 		//alle where definitionen anwenden
 		proceedAllWheres(definitions);
 
@@ -40,12 +32,10 @@ public class Compiler {
 		return tree;
 	}
 
-
 	/*
 	 * entfernt globale definitionen aus den globalen definitionen selbst
 	 */
 	private void removeGlobalDefsFromAll() {
-
 		removeSingleVarsFromAll();
 
 		for (int i=0;i<definitions.size();i++) {
@@ -54,16 +44,12 @@ public class Compiler {
 			n= removeDefs(n, definitions);
 			definitions.get(i).setAbstraction(n);
 		}
-
 	}
-
 
 	/*
 	 * einzelne Definition vom Typ def x=y mit Node-I versehen
 	 */
-
 	private void removeSingleVarsFromAll() {
-
 		for (int i=0;i<definitions.size();i++) {
 			Definition next = definitions.get(i);
 			Node n = next.getNode();
@@ -73,17 +59,12 @@ public class Compiler {
 		}
 	}
 
-
 	/*
 	 * ersetzt aus einem Node n alle Definitionen defs
 	 */
-
 	private Node removeDefs(Node n,List<Definition> defs) {
-
 		if (n== null) return null;
-
 		if (n instanceof NodeVar) {
-
 			NodeVar nodeVar = (NodeVar) n;
 			String varName=nodeVar.getName();
 
@@ -94,8 +75,7 @@ public class Compiler {
 				}
 			}
 			return n;
-		}
-		else{
+		} else {
 			if (n instanceof NodeApply) {
 				((NodeApply)n).setLeft(removeDefs(((NodeApply)n).getLeft(), defs));
 				((NodeApply)n).setRight(removeDefs(((NodeApply)n).getRight(),defs));
@@ -104,15 +84,11 @@ public class Compiler {
 		}
 	}
 
-
 	/*
 	 * entfernt alle funktionsvariablen aus den definitionen
 	 */
-
 	private void removeAllVars(ArrayList<Definition> d) {
-
 		for (int i=0;i<d.size();i++) {
-
 			Definition next = d.get(i);
 			Node n = next.getNode();
 			ArrayList<String> vars = next.getVars();
@@ -124,17 +100,12 @@ public class Compiler {
 		}
 	}
 
-
 	/*
 	 * abstrahiert die variable X aus einem node N	 
 	 */
-
 	private Node abstractVar(Node n, String x) {
-
 		// Ist n ein where Knoten, wird von allen Definitionen darin x ebenfalls abstrahiert
-
 		if (n instanceof NodeApply && ((NodeApply)n).getLeft() instanceof NodeWhere) {
-
 			NodeWhere whereNode = (NodeWhere) ((NodeApply)n).getLeft();
 			ArrayList<Definition> wheres = whereNode.wheres;
 
@@ -171,25 +142,21 @@ public class Compiler {
 		return null;
 	}
 
-
 	/*
 	 * kompiliert alle where-definitionen
 	 */
 	private void proceedAllWheres(ArrayList<Definition> d) {
-
 		for (int i=0;i<d.size();i++) {
 			Definition next = d.get(i);
 			Node n = proceedWheres(next.getNode());
 			d.get(i).setAbstraction(n);
 		}
-
 	}
 
 	/*
 	 * kompiliert where definitionen in einem Node n
 	 */
 	private Node proceedWheres(Node n) {
-
 		if (n==null) return n;
 
 		if ((n instanceof NodeApply) && (((NodeApply)n).getLeft() != null) && (((NodeApply)n).getLeft() instanceof NodeWhere)) {
@@ -231,11 +198,9 @@ public class Compiler {
 		Node nodeB = new NodeNil();
 
 		for (int i=wheres.size()-1;i>=0;i--) {
-
 			Definition actWhere = wheres.get(i);
 			nodeA = new NodeApply(new NodeU(),abstractVar(nodeA,actWhere.getIdentifier()));
 			nodeB = new NodeApply(new NodeApply(new NodeCons(),proceedWheres(actWhere.getNode())), nodeB);
-
 		}
 
 		Node newNodeB = new NodeApply(new NodeK(), nodeB);
@@ -292,7 +257,5 @@ public class Compiler {
 		}else{
 			return false;
 		}
-
 	}
-
 }

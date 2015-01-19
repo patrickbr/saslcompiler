@@ -7,16 +7,16 @@ Usage
 =====
 
 Tests can be run with
-
-   ant tests
+    
+    ant tests
 
 Build can be run with
 
-   ant build
+    ant build
 
 A jar can be cuild with
 
-   ant jar
+    ant jar
 
 Either start the sasl\_compiler.jar, type your programm and end it with CTRL+D _or_ pipe in the code like this:
 
@@ -32,22 +32,23 @@ Examples
 Simple addition
 ---------------
 ####Input
-5+4
+    5+4
 
 ####Output
-9
+    9
 
 Variable scopes
 ---------------
 ####Input
-((a where a x=(b where b=x+(c where c=x))) 11)+1
+    ((a where a x=(b where b=x+(c where c=x))) 11)+1
 
 ####Output
-23
+    23
 
 Prime sieve
 ----------
 ####Input
+```
 def take n l = if n=0 or l=nil then nil
 	else x:take (n-1) xs where x = hd l;
 				   xs = tl l
@@ -65,6 +66,6 @@ def	naturals x = x : (naturals (x+1))
 .
 
 take 50 primes
-
+```
 ####Output
-[2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97,101,103,107,109,113,127,131,137,139,149,151,157,163,167,173,179,181,191,193,197,199,211,223,227,229]
+    [2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97,101,103,107,109,113,127,131,137,139,149,151,157,163,167,173,179,181,191,193,197,199,211,223,227,229]

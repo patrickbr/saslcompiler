@@ -1,0 +1,11 @@
+def take n l = if n=0 or l=nil then nil else x:take (n-1) xs where x = hd l; xs = tl l def mod x y = (x - (x/y)*y) def primes = sieve (naturals 2)
+
+def sieve input = (hd input) : (sieve (removeFromList (tl input) (hd input)))
+
+def removeFromList list ele =if (mod (hd list) ele) = 0 then (removeFromList (tl list) ele) else (hd list) : (removeFromList (tl list) ele)
+
+def naturals x = x : (naturals (x+1))
+
+.
+
+take 5000 primes

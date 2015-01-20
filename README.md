@@ -20,11 +20,11 @@ A jar can be cuild with
 
 Either start the sasl\_compiler.jar, type your programm and end it with CTRL+D _or_ pipe in the code like this:
 
-    cat myprogram | java -jar sasl_compiler.jar
+    java -jar sasl_compiler.jar < myprogramm.sasl
 
 An example program outputting the first 5000 primes is included in this repo. Start it with
 
-    cat primesieve.sasl | java -jar sasl_compiler.jar
+    java -jar sasl_compiler.jar < primesieve.sasl
 
 Examples
 ========

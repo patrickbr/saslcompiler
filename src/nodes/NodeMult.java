@@ -1,16 +1,9 @@
 package nodes;
 
-public class NodeMult extends Node {
-
+public class NodeMult extends Node {	
 	
-	
-	
-	
-	public NodeMult() {
-		
-		super("mult");
-		
-		
+	public NodeMult() {		
+		super("mult");		
 	}
 
 	public boolean isConstant() {
@@ -19,11 +12,5 @@ public class NodeMult extends Node {
 	
 	public boolean isPrimitiveNum() {
 		return true;
-	}
-
-
-	
-	
-
-	
+	}	
 }

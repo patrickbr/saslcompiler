@@ -1,7 +1,6 @@
 package nodes;
 
 public class NodeApply extends Node{
-
 	private Node left=null;
 	private Node right=null;
 

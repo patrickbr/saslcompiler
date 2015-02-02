@@ -1,21 +1,11 @@
 package nodes;
 
-public class NodeFunction extends Node {
-	
-	
-
-	
+public class NodeFunction extends Node {	
 	public NodeFunction() {
-		
-		super("function");
-	
-		
+		super("function");		
 	}
 
 	public boolean isPrintable() {
 		return true;
-	}
-
-	
-
+	}	
 }

@@ -6,8 +6,6 @@ import nodes.Node;
 import nodes.NodeApply;
 
 public class DotPrinter {
-
-
 	/*
 	 * DotPrinter, kann für Debugging verwendet werden.
 	 */
@@ -19,7 +17,6 @@ public class DotPrinter {
 		this.n=n;
 	}
 
-
 	/*
 	 * gibt einen Baum als Dot-Graph aus
 	 */
@@ -30,13 +27,11 @@ public class DotPrinter {
 		temp += "}";
 		return temp;
 	}
-
 	
 	/*
 	 * gibt die knotenverbindungen zurück
 	 */
 	private String printer(Node n) {
-
 		String temp="";
 
 		if (!down.contains(null)) {
@@ -68,7 +63,6 @@ public class DotPrinter {
 			temp += n.hashCode() + " -> " + ((NodeApply)n).getRight().hashCode() +";";
 			if (!down.contains(((NodeApply)n).getRight())) temp += printer(((NodeApply)n).getRight());
 		}
-
 		return temp;
 	}
 }

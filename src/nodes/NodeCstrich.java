@@ -1,21 +1,11 @@
 package nodes;
 
-public class NodeCstrich extends Node {
-	
-		
-	
+public class NodeCstrich extends Node {	
 	public NodeCstrich() {
-		
-		super("C'");
-		
-		
+		super("C'");		
 	}
 	
 	public boolean isConstant() {
 		return true;
 	}
-
-
-	
-	
 }

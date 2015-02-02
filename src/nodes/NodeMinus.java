@@ -1,15 +1,9 @@
 package nodes;
 
-public class NodeMinus extends Node {
-	
-
-	
+public class NodeMinus extends Node {	
 	
 	public NodeMinus() {
-		
-		super("minus");
-		
-		
+		super("minus");		
 	}
 	
 	public boolean isConstant() {
@@ -19,9 +13,4 @@ public class NodeMinus extends Node {
 	public boolean isPrimitiveNum() {
 		return true;
 	}
-
-
-	
-	
-
 }

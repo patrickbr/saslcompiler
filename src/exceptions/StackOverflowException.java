@@ -1,8 +1,6 @@
 package exceptions;
 
 public class StackOverflowException extends ReduceException{
-	
-
 	/**
 	 * 
 	 */
@@ -11,5 +9,4 @@ public class StackOverflowException extends ReduceException{
 	public String getMessage() {
 		return "<br>Error while reducing: Stack Overflow (endless recursion?)";
 	}
-
 }

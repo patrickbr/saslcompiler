@@ -16,7 +16,6 @@ import nodes.Node;
 import exceptions.ParseException;
 import exceptions.ReduceException;
 
-
 public class SASLCoordinator {
 	private SettingsReader s;
 	private PrintStream statusStream = System.out;

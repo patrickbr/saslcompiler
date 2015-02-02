@@ -1,8 +1,6 @@
 package tokens;
 
-public class TokenString extends Token{
-
-
+public class TokenString extends Token {
 	private String stringContent;
 
 	public TokenString(String stringContent,int position,int line) {
@@ -13,5 +11,4 @@ public class TokenString extends Token{
 	public String getStringContent() {
 		return stringContent;
 	}
-
 }

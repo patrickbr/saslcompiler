@@ -1,7 +1,6 @@
 
 public class SettingsReader {
 
-
 	private String filePath="";
 	private boolean useFile=false;
 	private String outputFilePath="";

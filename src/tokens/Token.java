@@ -1,11 +1,8 @@
 package tokens;
 
 public abstract class Token {
-
-
 	private int position=0;
 	private int line=1;
-
 
 	/*
 	 * token saves position in stream for tracing purposes
@@ -23,6 +20,4 @@ public abstract class Token {
 	public int getLine() {
 		return line;
 	}
-
-
 }

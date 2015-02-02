@@ -1,22 +1,11 @@
 package nodes;
 
-public class NodeCons extends Node {
-	
-	
-	
-	
+public class NodeCons extends Node {	
 	public NodeCons() {
-		
-		super("cons");
-		
-		
+		super("cons");		
 	}
-	
-	
+		
 	public boolean isConstant() {
 		return true;
 	}
-	
-	
-
 }

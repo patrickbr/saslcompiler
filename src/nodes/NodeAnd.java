@@ -1,12 +1,8 @@
 package nodes;
 
-public class NodeAnd extends Node {
-	
-	
+public class NodeAnd extends Node {	
 	public NodeAnd() {
-		
-		super("and");
-			
+		super("and");			
 	}
 	
 	public boolean isConstant() {
@@ -15,7 +11,5 @@ public class NodeAnd extends Node {
 	
 	public boolean isPrimitiveBool() {
 		return true;
-	}
-
-	
+	}	
 }

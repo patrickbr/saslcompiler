@@ -1,16 +1,9 @@
 package nodes;
 import java.util.ArrayList;
 
-
-
-
 public class Definition {
-
-
 	private Node node;
-
 	private String identifier;
-
 	private ArrayList<String> var = new ArrayList<String>();
 
 	public Definition(Node node, String identfier) {
@@ -39,5 +32,4 @@ public class Definition {
 	public void setAbstraction(Node a) {
 		this.node=a;
 	}
-
 }

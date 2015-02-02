@@ -8,7 +8,6 @@ import exceptions.TypeMismatchException;
 import nodes.*;
 
 public abstract class ReductionMachine {
-
 	public static Node reduce(Node tree) throws ReduceException {
 		Stack<Node> nodeStack = new Stack<Node>();
 		
@@ -162,7 +161,6 @@ public abstract class ReductionMachine {
 
 		//Node S
 		else if (nodeStack.peek() instanceof NodeS) {
-
 			nodeStack.pop();
 
 			Node A = ((NodeApply)nodeStack.pop()).getRight();
@@ -174,7 +172,6 @@ public abstract class ReductionMachine {
 			// S@(K@f)@(K@g)
 
 			if ((A instanceof NodeApply) &&(((NodeApply)A).getLeft() instanceof NodeK) && (B instanceof NodeApply) && (((NodeApply)B).getLeft() instanceof NodeK)) {
-
 				Node f =((NodeApply)A).getRight();
 				Node g =((NodeApply)B).getRight();
 
@@ -183,17 +180,14 @@ public abstract class ReductionMachine {
 
 				//S@(K@f)@I
 
-			}else if ((A instanceof NodeApply) &&(((NodeApply)A).getLeft() instanceof NodeK) &&  B instanceof NodeI) {
-
+			} else if ((A instanceof NodeApply) &&(((NodeApply)A).getLeft() instanceof NodeK) &&  B instanceof NodeI) {
 				Node f = ((NodeApply)A).getRight();
 
 				returnNode = f;
 
 				//S@(K@f)@(B@g@h)					
 
-			}else if ((A instanceof NodeApply) && (((NodeApply)A).getLeft() instanceof NodeK) && ((NodeApply)B).getLeft() instanceof NodeApply && ((NodeApply)((NodeApply)B).getLeft()).getLeft() instanceof NodeB){
-
-
+			} else if ((A instanceof NodeApply) && (((NodeApply)A).getLeft() instanceof NodeK) && ((NodeApply)B).getLeft() instanceof NodeApply && ((NodeApply)((NodeApply)B).getLeft()).getLeft() instanceof NodeB){
 				Node g= ((NodeApply)((NodeApply)B).getLeft()).getRight();
 				Node h= ((NodeApply)B).getRight(); 
 				Node f= ((NodeApply)A).getRight();
@@ -203,7 +197,7 @@ public abstract class ReductionMachine {
 
 				//S@(K@f)@g
 
-			}else if ((A instanceof NodeApply) &&((NodeApply)A).getLeft() instanceof NodeK)  {
+			} else if ((A instanceof NodeApply) &&((NodeApply)A).getLeft() instanceof NodeK)  {
 				Node g=B;
 				Node f = ((NodeApply)A).getRight();
 
@@ -212,8 +206,7 @@ public abstract class ReductionMachine {
 
 				//S@(B@f@g)@(K@h)
 
-			}else if ((A instanceof NodeApply) &&(((NodeApply)A).getLeft() instanceof NodeApply && ((NodeApply)((NodeApply)A).getLeft()).getLeft() instanceof NodeB) && ((NodeApply)B).getLeft() instanceof NodeK) {
-
+			} else if ((A instanceof NodeApply) &&(((NodeApply)A).getLeft() instanceof NodeApply && ((NodeApply)((NodeApply)A).getLeft()).getLeft() instanceof NodeB) && ((NodeApply)B).getLeft() instanceof NodeK) {
 				Node g = ((NodeApply)A).getRight();
 				Node f = ((NodeApply)((NodeApply)A).getLeft()).getRight();
 				Node h = ((NodeApply)B).getRight();
@@ -223,8 +216,7 @@ public abstract class ReductionMachine {
 
 				//S@(B@f@g)@h
 
-			}else if ((A instanceof NodeApply) &&((NodeApply)A).getLeft() instanceof NodeApply && ((NodeApply)((NodeApply)A).getLeft()).getLeft() instanceof NodeB){
-
+			} else if ((A instanceof NodeApply) &&((NodeApply)A).getLeft() instanceof NodeApply && ((NodeApply)((NodeApply)A).getLeft()).getLeft() instanceof NodeB){
 				Node h = B;
 
 				Node g = ((NodeApply)A).getRight();
@@ -236,8 +228,6 @@ public abstract class ReductionMachine {
 				//S@f@(K@g)
 
 			} else if ((B instanceof NodeApply) &&((NodeApply)B).getLeft() instanceof NodeK){
-
-
 				Node f = A;
 				Node g = ((NodeApply)B).getRight();
 
@@ -259,11 +249,9 @@ public abstract class ReductionMachine {
 			}
 
 			nodeStack.push(returnNode);
-
 		}
 
 		//Node Y
-
 		else if (nodeStack.peek() instanceof NodeY) {
 			nodeStack.pop();
 
@@ -276,7 +264,6 @@ public abstract class ReductionMachine {
 		}
 
 		//Node K
-
 		else if (nodeStack.peek() instanceof NodeK) {
 			nodeStack.pop();
 
@@ -431,7 +418,6 @@ public abstract class ReductionMachine {
 		}
 
 		//Node not
-
 		else if (nodeStack.peek() instanceof NodeNot) {
 			nodeStack.pop();
 			NodeApply nodeApply = (NodeApply) nodeStack.pop();
@@ -447,7 +433,6 @@ public abstract class ReductionMachine {
 		}
 
 		//Node equal & Node notequal
-
 		else if ((nodeStack.peek() instanceof NodeEqual) || (nodeStack.peek() instanceof NodeNotEqual)){
 			boolean not=nodeStack.peek() instanceof NodeNotEqual;
 
@@ -458,7 +443,6 @@ public abstract class ReductionMachine {
 			Node y =  reduce(nodeApply.getRight());
 
 			if (x instanceof NodeNil || y instanceof NodeNil) {
-
 				boolean val = x instanceof NodeNil &&  x instanceof NodeNil;
 
 				nodeApply.setLeft(new NodeI());
@@ -467,7 +451,6 @@ public abstract class ReductionMachine {
 				nodeStack.push(nodeApply);
 
 			} else if (x instanceof NodeNum) {
-
 				NodeNum xNum = (NodeNum) x;
 				expectNum(new NodeEqual(),y);
 				NodeNum yNum = (NodeNum) y;
@@ -478,7 +461,6 @@ public abstract class ReductionMachine {
 				nodeStack.push(nodeApply);
 
 			} else if (x instanceof NodeBool) {
-
 				NodeBool xNum = (NodeBool) x;
 				expectBool(new NodeEqual(),y);
 				NodeBool yNum = (NodeBool) y;
@@ -498,13 +480,11 @@ public abstract class ReductionMachine {
 				if (not) nodeApply.setRight(new NodeApply(new NodeI(),new NodeBool(!xNum.getStringContent().equals(yNum.getStringContent()) )));
 				else nodeApply.setRight(new NodeApply(new NodeI(),new NodeBool(xNum.getStringContent().equals(yNum.getStringContent()) )));
 
-
 				nodeStack.push(nodeApply);
 			}
 		} 
 
 		//Primitive bool-funktionen
-
 		else if (!nodeStack.isEmpty() && !(nodeStack.peek() == null)  && nodeStack.peek().isPrimitiveBool()) {
 			Node function = nodeStack.peek();
 
@@ -528,30 +508,28 @@ public abstract class ReductionMachine {
 		}
 
 		//Node cond
-
 		else if (nodeStack.peek()instanceof NodeCond) {
-
 			nodeStack.pop();
 
 			Node temp = reduce(((NodeApply)nodeStack.pop()).getRight());
 			expectBool(new NodeCond(), temp);
 			NodeBool condition = (NodeBool) temp;
-			Node x =  ((NodeApply)nodeStack.pop()).getRight();			NodeApply nodeApply = (NodeApply) nodeStack.pop();
+			Node x =  ((NodeApply)nodeStack.pop()).getRight();
+			NodeApply nodeApply = (NodeApply) nodeStack.pop();
 			Node y = nodeApply.getRight();
 
 			if (condition.getBoolean()) {
 
 				nodeApply.setLeft(new NodeI());
-				nodeApply.setRight(x);
-			}else{
-				nodeApply.setLeft(new NodeI());
+				nodeApply.setRight(x);
+
+			} else {
+				nodeApply.setLeft(new NodeI());
 				nodeApply.setRight(y);;
 			}
-
 			nodeStack.push(nodeApply);
 		}
 	}
-
 
 	// Typsicherheiten bei primitiven Funktionsanwendungen
 

@@ -3,7 +3,6 @@ import tokens.*;
 
 
 public class ParseException extends Exception{
-
 	/**
 	 * 
 	 */
@@ -14,7 +13,6 @@ public class ParseException extends Exception{
 	String expected;
 	Token found;
 
-
 	public ParseException (Token atToken) {
 		if (atToken != null) this.atToken=atToken;
 	}
@@ -24,35 +22,28 @@ public class ParseException extends Exception{
 	}
 
 	public ParseException (Token atToken, Token expectedToken) {
-
 		if (atToken != null) this.atToken=atToken;
 		this.expectedToken=expectedToken;
-
 	}
 
 	public ParseException (Token atToken, String expected) {
-
 		if (atToken != null) this.atToken=atToken;
 		this.expected=expected;
 	}
 
 	public ParseException (Token atToken, Token expectedToken, Token found) {
-
 		if (atToken != null) this.atToken=atToken;
 		this.expectedToken=expectedToken;
 		this.found=found;
-
 	}
 
 	public ParseException (Token atToken, String expected, Token found) {
-
 		if (atToken != null) this.atToken=atToken;
 		this.expected=expected;
 		this.found=found;
 	}
 
 	private String getTokenString(Token t) {
-
 		if (t instanceof TokenBool) return Boolean.toString(((TokenBool)t).getBool());
 		if (t instanceof TokenString) return ((TokenString)t).getStringContent();
 		if (t instanceof TokenNum) return Integer.toString(((TokenNum)t).getNum());
@@ -94,11 +85,9 @@ public class ParseException extends Exception{
 			}
 		}
 		return "<undefinied>";
-
 	}
 
 	public String getMessage() {
-
 		String temp ="<br>Error after parsing '" + getTokenString(found) + "' [" + atToken.getClass().getSimpleName() + "] @ line " + atToken.getLine() + ", pos " + (atToken.getPosition()) + " <br>";
 
 		if (expectedToken !=null) {
@@ -113,9 +102,5 @@ public class ParseException extends Exception{
 			temp += "<br>(Found: '" + getTokenString(found) + "' [" + found.getClass().getSimpleName() + "])";
 		}
 		return temp;
-
 	}
-
-
-
 }

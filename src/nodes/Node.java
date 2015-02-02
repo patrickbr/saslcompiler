@@ -1,9 +1,6 @@
 package nodes;
 
-
 public abstract class Node {
-
-
 	private String symbol="";
 
 	public Node(String symbol) {
@@ -34,5 +31,4 @@ public abstract class Node {
 	public String getValue() {
 		return null;
 	}
-
 }

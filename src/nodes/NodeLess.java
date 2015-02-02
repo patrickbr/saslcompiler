@@ -1,30 +1,15 @@
 package nodes;
 
-public class NodeLess extends Node {
-
-	
-	
-	
-	
+public class NodeLess extends Node {	
 	public NodeLess() {
-		
-		super("less");
-		
-		
+		super("less");		
 	}
 	
-
 	public boolean isConstant() {
 		return true;
 	}
 	
 	public boolean isPrimitiveNum() {
 		return true;
-	}
-
-
-
-	
-	
-	
+	}	
 }

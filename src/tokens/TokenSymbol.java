@@ -2,7 +2,6 @@ package tokens;
 
 
 public class TokenSymbol extends Token{
-
 	public enum tokenType{BC, BO, SBC, SBO,  COLON, COMMA, PERIOD, SEMICOLON,
 		DEF, WHERE, IF, THEN, ELSE, NIL,
 		AND, OR, DIV, MULT, MINUS, PLUS, HD, TL,
@@ -18,5 +17,4 @@ public class TokenSymbol extends Token{
 		public tokenType getType() {
 			return type;
 		}
-
 }

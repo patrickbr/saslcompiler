@@ -1,7 +1,6 @@
 package tokens;
 
-public class TokenBool extends Token{
-		
+public class TokenBool extends Token{		
 	private boolean bool;
 		
 	public TokenBool(boolean bool, int position,int line) {
@@ -12,5 +11,4 @@ public class TokenBool extends Token{
 	public boolean getBool() {
 		return bool;
 	}
-
 }

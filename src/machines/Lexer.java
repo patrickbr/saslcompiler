@@ -7,7 +7,6 @@ import java.io.InputStreamReader;
 import tokens.*;
 
 public class Lexer  {
-
 	private InputStreamReader reader;
 	private int lookAhead=-1;
 	private int actChar=-1;
@@ -25,7 +24,6 @@ public class Lexer  {
 	 * returs next token from stream
 	 */
 	private Token getNextToken() throws IOException{
-
 		skipWhitespaces();
 
 		switch (actChar) {
@@ -68,7 +66,6 @@ public class Lexer  {
 		return lexName();
 	}
 
-
 	/*
 	 * skips whitespaces in stream
 	 */
@@ -85,7 +82,6 @@ public class Lexer  {
 	 * returns string. reads until quote is reached or EOF
 	 */
 	private Token lexString() throws IOException {
-
 		String temp="";
 		int actChar;
 
@@ -102,7 +98,6 @@ public class Lexer  {
 	 */
 
 	private Token lexNum() throws IOException {
-
 		String temp=(Character.toString((char)actChar));
 
 		while (Character.isDigit((lookAhead))) {
@@ -118,7 +113,6 @@ public class Lexer  {
 	 */
 	
 	private Token lexName() throws IOException {
-
 		String temp= Character.toString((char)actChar);
 
 		while(!Character.isWhitespace(lookAhead) && lookAhead != -1 && lookAhead != 34 && !(lookAhead >= 40 && lookAhead <=47) 
@@ -150,7 +144,6 @@ public class Lexer  {
 	 * returns the next token
 	 */
 	public Token next() throws IOException {
-
 		if (lookAheadToken != null) {
 			Token temp = lookAheadToken;
 			lookAheadToken=null;
@@ -165,7 +158,6 @@ public class Lexer  {
 	 * returns a lookahead token without stepping
 	 */
 	public Token lookahead() throws IOException {
-
 		if (lookAheadToken == null) actToken=getNextToken();
 		lookAheadToken = actToken;	
 		return actToken;
@@ -175,7 +167,6 @@ public class Lexer  {
 	 * returns the next character of the stream
 	 */
 	private int getNextChar() throws IOException{
-
 		pos++;
 
 		int oldLookahead=lookAhead;
@@ -190,5 +181,4 @@ public class Lexer  {
 		lookAhead=reader.read();
 		return chara;
 	}
-
 }

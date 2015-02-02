@@ -1,16 +1,9 @@
 package nodes;
 
 public class NodePlus extends Node {
-	
-	
-
-	public NodePlus() {
-		
-		super("plus");
-		
-		
-	}
-	
+	public NodePlus() {		
+		super("plus");				
+	}	
 
 	public boolean isConstant() {
 		return true;
@@ -19,7 +12,4 @@ public class NodePlus extends Node {
 	public boolean isPrimitiveNum() {
 		return true;
 	}
-	
-
-
 }

@@ -1,26 +1,15 @@
 package nodes;
 
-public class NodeDiv extends Node {
-	
-	
-
-	
+public class NodeDiv extends Node {	
 	public NodeDiv() {
-		
-		super("div");
-		
-		
+		super("div");			
 	}
-	
-	
+		
 	public boolean isConstant() {
 		return true;
 	}
 		
 	public boolean isPrimitiveNum() {
 		return true;
-	}
-	
-
-
+	}	
 }

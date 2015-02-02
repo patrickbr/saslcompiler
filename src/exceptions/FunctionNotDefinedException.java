@@ -1,10 +1,6 @@
 package exceptions;
 
-
-
 public class FunctionNotDefinedException extends ReduceException {
-
-
 	String function;
 
 	/**
@@ -12,18 +8,11 @@ public class FunctionNotDefinedException extends ReduceException {
 	 */
 	private static final long serialVersionUID = 1L;
 
-
-	public FunctionNotDefinedException(String function) {
-	
+	public FunctionNotDefinedException(String function) {	
 		this.function=function;
 	}
-
 
 	public String getMessage() {
 		return "<br>Error while reducing: Function not defined ('" + function + "')";
 	}
-
-
-
-
 }

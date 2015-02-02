@@ -1,19 +1,14 @@
 package nodes;
 
-public class NodeBool extends Node {
-	
-	
+public class NodeBool extends Node {	
 	private boolean bool;
-	
-	
+		
 	public NodeBool(boolean bool) {
 		
 		super("bool");
 		this.bool=bool;
 			
-	}
-
-	
+	}	
 	
 	public boolean isConstant() {
 		return true;
@@ -34,8 +29,5 @@ public class NodeBool extends Node {
 
 	public String getValue() {
 		return Boolean.toString(bool);
-	}
-
-	
-	
+	}	
 }

@@ -1,24 +1,17 @@
 package nodes;
 
 public class NodeString extends Node  {
-	
-	
 
 	String content;
-	
-	
-	public NodeString(String content) {
 		
+	public NodeString(String content) {		
 		super("string");
-		this.content=content;
-		
+		this.content=content;		
 	}
-
 
 	public String getStringContent() {
 		return content;
 	}
-
 
 	public void setStringContent(String content) {
 		this.content = content;
@@ -34,12 +27,8 @@ public class NodeString extends Node  {
 	public String getValue() {
 		return content;
 	}
-
-
-	
 	
 	public String makeStyle() {
 		return "[shape=triangle label=\"" + this.getSymbol() + this.content + "\"];";
-	}
-	
+	}	
 }

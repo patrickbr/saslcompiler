@@ -1,16 +1,8 @@
 package nodes;
 
-public class NodeNil extends Node {
-	
-	
-
-	
-	
-	public NodeNil() {
-		
-		super("nil");
-		
-		
+public class NodeNil extends Node {	
+	public NodeNil() {		
+		super("nil");		
 	}
 	
 	public boolean isConstant() {
@@ -24,6 +16,4 @@ public class NodeNil extends Node {
 	public String getValue(){
 		return "nil";
 	}
-
-	
 }

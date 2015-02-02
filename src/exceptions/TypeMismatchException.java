@@ -3,7 +3,6 @@ package exceptions;
 import nodes.Node;
 
 public class TypeMismatchException extends ReduceException {
-
 	/**
 	 * 
 	 */
@@ -13,14 +12,10 @@ public class TypeMismatchException extends ReduceException {
 
 	public TypeMismatchException (Node expecter,String expected) {
 		this.expected=expected;
-
 		this.expecter=expecter;
 	}
-
-
 
 	public String getMessage() {
 		return "<br>Error while reducing: Primitive function '" + expecter.getSymbol() + "' expected '" + expected + "' as parameter!";
 	}
-
 }

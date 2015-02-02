@@ -18,8 +18,6 @@ import tokens.TokenSymbol.tokenType;
 
 
 public class Parser {
-
-
 	private Lexer lex;
 	private Token previousToken=null;
 	private Token actToken=null;
@@ -30,7 +28,6 @@ public class Parser {
 
 
 	public ArrayList<Definition> parse(Lexer lex) throws ParseException,IOException  {
-
 		this.lex=lex;
 
 		Node main = evSystem();
@@ -39,16 +36,13 @@ public class Parser {
 		haupt.setAbstraction(main);
 		definitions.add(haupt);
 		return definitions;
-
 	}
 	
 	public ArrayList<Definition> parseInclude(Lexer lex) throws ParseException,IOException  {
-
 		this.lex=lex;
 		check(new TokenSymbol(tokenType.DEF,0,0));
 		evIncludeFuncDef();
 		return definitions;
-
 	}
 
 	/*
@@ -56,11 +50,8 @@ public class Parser {
 	 * apply the grammar rules to the tokenstream
 	 * 
 	 * 
-	 */
-	
-	
+	 */	
 	private Node evSystem() throws ParseException,IOException  {
-
 		if (nextTokenIsSymbolTokenType(TokenSymbol.tokenType.DEF)) {
 			fetchNextToken();
 			evFuncDef();	
@@ -76,7 +67,6 @@ public class Parser {
 	}
 
 	private void evFuncDef() throws ParseException,IOException  {
-
 		definitions.add(evDef());
 
 		if (!nextTokenIsSymbolTokenType(TokenSymbol.tokenType.PERIOD)) {
@@ -86,7 +76,6 @@ public class Parser {
 	}
 	
 	private void evIncludeFuncDef() throws ParseException,IOException  {
-
 		definitions.add(evDef());
 		
 		if (!(getLookAhead() instanceof TokenEOF)) {
@@ -96,7 +85,6 @@ public class Parser {
 	}
 	
 	private Definition evDef() throws ParseException,IOException {
-
 		String name = evName();
 		checkNull(name,"<identifier>");
 		ArrayList<String> vars = new ArrayList<String>();
@@ -114,7 +102,6 @@ public class Parser {
 	}
 
 	private String evName() throws ParseException,IOException  {
-
 		if (nextTokenIsIdToken()) {
 			TokenID temp = (TokenID)fetchNextToken();
 			return temp.getIdName();
@@ -124,7 +111,6 @@ public class Parser {
 	}
 	
 	private Node evAbstraction() throws ParseException,IOException  {
-
 		if (nextTokenIsSymbolTokenType(TokenSymbol.tokenType.EQ)) {
 			fetchNextToken();
 			return evExpr();
@@ -134,7 +120,6 @@ public class Parser {
 	}
 
 	private Node evExpr() throws ParseException,IOException  {
-
 		Node condExpr = evCondExpr();
 		NodeWhere where =null;
 
@@ -159,7 +144,6 @@ public class Parser {
 	}
 
 	private Node evCondExpr() throws ParseException,IOException {
-
 		checkNull(getLookAhead(), "<expression>");
 
 		if (nextTokenIsSymbolTokenType(TokenSymbol.tokenType.IF)) {
@@ -187,7 +171,6 @@ public class Parser {
 
 
 	private Node evListExpr() throws ParseException,IOException {
-
 		Node opExpr = evOpExpr();
 		Node listExprStrich = evListExprStrich();
 
@@ -202,7 +185,6 @@ public class Parser {
 
 
 	private Node evListExprStrich() throws ParseException,IOException {
-
 		if (nextTokenIsSymbolTokenType(TokenSymbol.tokenType.COLON)) {
 
 			fetchNextToken();
@@ -220,7 +202,6 @@ public class Parser {
 
 
 	private Node evOpExpr() throws ParseException,IOException {
-
 		Node conjunct = evConjunct();
 		Node opExprStrich = evOpExprStrich();
 
@@ -232,7 +213,6 @@ public class Parser {
 	}
 
 	private Node evOpExprStrich() throws ParseException,IOException {
-
 		if (nextTokenIsSymbolTokenType(TokenSymbol.tokenType.OR)) {
 
 			fetchNextToken();
@@ -250,7 +230,6 @@ public class Parser {
 	}
 
 	private Node evConjunct() throws ParseException,IOException  {
-
 		Node compar = evCompar();
 		Node conjunctStrich = evConjunctStrich();
 
@@ -263,7 +242,6 @@ public class Parser {
 
 
 	private Node evConjunctStrich()throws ParseException,IOException  {
-
 		if (nextTokenIsSymbolTokenType(TokenSymbol.tokenType.AND)) {
 
 			fetchNextToken();
@@ -282,7 +260,6 @@ public class Parser {
 
 
 	private Node evCompar() throws ParseException,IOException {
-
 		Node add = evAdd();
 		Node relop= null;
 
@@ -306,8 +283,7 @@ public class Parser {
 	}
 
 
-	private Node evAdd() throws ParseException,IOException  {
-
+	private Node evAdd() throws ParseException,IOException {
 		Node mul = evMul();
 		Node addop= null;
 
@@ -325,8 +301,7 @@ public class Parser {
 		}
 	}
 
-	private Node evMul() throws ParseException,IOException  {
-
+	private Node evMul() throws ParseException,IOException {
 		Node factor = evFactor();
 		checkNull(factor,"<expression>");
 		Node mulop= null;
@@ -345,8 +320,7 @@ public class Parser {
 
 	}
 
-	private Node evFactor() throws ParseException,IOException  {
-
+	private Node evFactor() throws ParseException,IOException {
 		if (nextTokenIsSymbolTokenType(TokenSymbol.tokenType.NOT)
 				|| nextTokenIsSymbolTokenType(TokenSymbol.tokenType.HD)
 				|| nextTokenIsSymbolTokenType(TokenSymbol.tokenType.TL)
@@ -364,8 +338,7 @@ public class Parser {
 		}
 	}
 
-	private Node evComb() throws ParseException,IOException  {
-
+	private Node evComb() throws ParseException,IOException {
 		Node simple = evSimple();
 		Node nextSimple;
 		Node tempBaum = simple;
@@ -377,10 +350,8 @@ public class Parser {
 		return tempBaum;
 	}
 
-	private Node evSimple() throws ParseException{
-
+	private Node evSimple() throws ParseException {
 		try {
-
 			if (nextTokenIsIdToken()) {
 				TokenID id = (TokenID)getLookAhead();
 				fetchNextToken();
@@ -389,14 +360,12 @@ public class Parser {
 			}
 
 			if (nextTokenIsNumToken()) {
-
 				TokenNum num = (TokenNum)getLookAhead();
 				fetchNextToken();
 				return new NodeNum(num.getNum());
 			}
 
 			if (nextTokenIsBoolToken()) {
-
 				TokenBool bool = (TokenBool)getLookAhead();
 				fetchNextToken();
 				return new NodeBool(bool.getBool());
@@ -408,7 +377,6 @@ public class Parser {
 			}
 
 			if (nextTokenIsStringToken()) {
-
 				TokenString string = (TokenString)getLookAhead();
 				fetchNextToken();
 				return new NodeString(string.getStringContent());
@@ -419,16 +387,15 @@ public class Parser {
 			}
 
 			if (nextTokenIsSymbolTokenType(TokenSymbol.tokenType.BO)) {
-
 				fetchNextToken();
 				Node expression = evExpr();
 				check(new TokenSymbol(tokenType.BC,0,0));
 				return expression;
 			}
 
-		}catch (ParseException e) {
+		} catch (ParseException e) {
 			throw e;
-		}catch (Exception e) {
+		} catch (Exception e) {
 			throw new ParseException(fetchPreviousToken(), "<simple>");
 		}
 
@@ -436,9 +403,7 @@ public class Parser {
 	}
 
 	private Node evPrefix() throws IOException {
-
 		if (getLookAhead() instanceof TokenSymbol) {
-
 			switch(((TokenSymbol) getLookAhead()).getType()) {
 
 			case MINUS:
@@ -461,13 +426,9 @@ public class Parser {
 		return null;
 	}
 
-
 	private Node evAddop() throws IOException {
-
 		if (getLookAhead() instanceof TokenSymbol) {
-
 			switch(((TokenSymbol) getLookAhead()).getType()) {
-
 			case MINUS: 
 				fetchNextToken();
 				return new NodeMinus();
@@ -476,15 +437,11 @@ public class Parser {
 				return new NodePlus();
 			}
 		}
-
 		return null;
 	}
 
-
 	private Node evMulop() throws IOException {
-
 		if (getLookAhead() instanceof TokenSymbol) {
-
 			switch(((TokenSymbol) getLookAhead()).getType()) {
 
 			case DIV: 
@@ -493,16 +450,13 @@ public class Parser {
 			case MULT: 
 				fetchNextToken();
 				return new NodeMult();
-
 			}
 		}
 		return null;
 	}
 
 	private Node evRelop() throws IOException {
-
 		if (getLookAhead() instanceof TokenSymbol) {
-
 			switch(((TokenSymbol) getLookAhead()).getType()) {
 
 			case EQ:
@@ -529,45 +483,37 @@ public class Parser {
 	}
 
 	private Node evList() throws ParseException,IOException {
-
 		if (nextTokenIsSymbolTokenType(tokenType.SBO)) {
 
 			fetchNextToken();
 
 			if (nextTokenIsSymbolTokenType(tokenType.SBC)) {
-
 				fetchNextToken();
 				return new NodeNil();
 			}
 			return evListElems();
-		}else{
+		} else {
 			return null;
 		}
 	}
 
 	private Node evListElems() throws ParseException,IOException {
-
 		Node expression = evExpr();
 		checkNull(expression, "<expression>");
 
 		if (nextTokenIsSymbolTokenType(tokenType.COMMA)) {
-
 			fetchNextToken();
 			Node listElemsStrich = evListElems();
 			checkNull(listElemsStrich, "<expression>");
 			return new NodeApply(new NodeApply(new NodeCons(),expression),listElemsStrich);
-
-		}else{
-
+		} else {
 			check(new TokenSymbol(tokenType.SBC,0,0));
 			return new NodeApply(new NodeApply(new NodeCons(),expression),new NodeNil());
-
 		}
 	}
 
 
 	private void check(Token tokenExpected) throws ParseException,IOException {
-
 		Token after = fetchPreviousToken();
 		Token currentToken;
 
@@ -581,36 +527,31 @@ public class Parser {
 				throw new ParseException(currentToken, tokenExpected,fetchPreviousToken());
 			}
 
-		}else if ((!(fetchNextToken().getClass().equals(tokenExpected.getClass())))) {
+		} else if ((!(fetchNextToken().getClass().equals(tokenExpected.getClass())))) {
 			throw new ParseException(after, tokenExpected,fetchPreviousToken());
 		}
 	}
 
 	private void checkNull(Node nullNode, String expected) throws ParseException,IOException {
-
 		if (getLookAhead() != null)	{
 			if (nullNode ==null) throw new ParseException(fetchPreviousToken(),expected,getLookAhead());
-		}else{
+		} else {
 			if (nullNode ==null) throw new ParseException(fetchPreviousToken(),expected);
 		}
-
 	}
 
 	private void checkNull(Token nullToken, String expected) throws ParseException,IOException {
-
 		if (getLookAhead() != null)	{
 			if (nullToken ==null) throw new ParseException(fetchPreviousToken(),expected,getLookAhead());
-		}else{
+		} else {
 			if (nullToken ==null) throw new ParseException(fetchPreviousToken(),expected);
 		}
-
 	}
 
 	private void checkNull(String nullString, String expected) throws ParseException, IOException {
-
 		if (getLookAhead() != null)	{
 			if (nullString ==null) throw new ParseException(fetchPreviousToken(),expected,getLookAhead());
-		}else{
+		} else {
 			if (nullString ==null) throw new ParseException(fetchPreviousToken(),expected);
 		}
 	}
@@ -618,14 +559,12 @@ public class Parser {
 	/*
 	 * returns next token from lexer
 	 */
-
 	private Token fetchNextToken() throws IOException {
-
 		previousToken = actToken;
 		if (lookahead != null) {
 			actToken=lookahead;
 			lookahead=null;
-		}else{
+		} else {
 			actToken=lex.next();
 		}
 		return actToken;
@@ -633,16 +572,14 @@ public class Parser {
 
 	/*
 	 * returns the previous token for debugging purposes
-	 */
-	
+	 */	
 	private Token fetchPreviousToken() {
 		return previousToken;
 	}
 
 	/*
 	 * returns the lexer's lookahead
-	 */
-	
+	 */	
 	private Token getLookAhead() throws IOException{
 		return lex.lookahead();
 	}
@@ -650,7 +587,6 @@ public class Parser {
 	/*
 	 * returns true if more tokens are availabe, false if not
 	 */
-
 	private boolean moreTokens() throws IOException {
 		return (((lookahead != null) && !(lookahead instanceof TokenEOF)) || !(getLookAhead() instanceof TokenEOF));
 	}
@@ -658,7 +594,6 @@ public class Parser {
 	/*
 	 * returns true if next token is of type symbol
 	 */
-
 	private boolean nextTokenIsSymbolTokenType(TokenSymbol.tokenType type) throws IOException {
 		if (moreTokens()){
 			Token test=this.getLookAhead();
@@ -670,7 +605,6 @@ public class Parser {
 	/*
 	 * returns true if next token is of type num
 	 */
-
 	private boolean nextTokenIsNumToken() throws IOException {
 		if (moreTokens()){
 			Token test=this.getLookAhead();
@@ -681,8 +615,7 @@ public class Parser {
 	
 	/*
 	 * returns true if next token is of type boolean
-	 */
-	
+	 */	
 	private boolean nextTokenIsBoolToken() throws IOException {
 		if (moreTokens()){
 			Token test=this.getLookAhead();
@@ -693,8 +626,7 @@ public class Parser {
 	
 	/*
 	 * returns true if next token is of type string
-	 */
-	
+	 */	
 	private boolean nextTokenIsStringToken() throws IOException {
 		if (moreTokens()){
 			Token test=this.getLookAhead();
@@ -706,7 +638,6 @@ public class Parser {
 	/*
 	 * returns true if next token is of type id
 	 */
-
 	private boolean nextTokenIsIdToken() throws IOException {
 		if (moreTokens()){
 			Token test=this.getLookAhead();
@@ -714,5 +645,4 @@ public class Parser {
 		}
 		return false;
 	}
-
 }

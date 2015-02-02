@@ -2,10 +2,7 @@ package machines;
 
 import java.util.ArrayList;
 import java.util.List;
-
-
 import nodes.*;
-
 
 public class Compiler {
 	private Node tree;
@@ -186,8 +183,6 @@ public class Compiler {
 		}
 	}
 
-
-
 	/*
 	 * kompiliert einzelne where-definitionen vom type where a=b
 	 */
@@ -240,9 +235,7 @@ public class Compiler {
 	 */
 
 	private boolean identifierInNode(Node n, String varName) {
-
 		if (n instanceof NodeVar) {
-
 			NodeVar var = (NodeVar) n;
 			if (var.getName().equals(varName)) {
 				return true;
@@ -250,11 +243,9 @@ public class Compiler {
 		}
 
 		if (n instanceof NodeApply) {
-
 			NodeApply an = (NodeApply) n;
 			return (identifierInNode(an.getLeft(),varName) || identifierInNode(an.getRight(),varName));
-
-		}else{
+		} else {
 			return false;
 		}
 	}

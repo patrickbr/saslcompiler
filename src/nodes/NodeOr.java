@@ -1,14 +1,8 @@
 package nodes;
 
-public class NodeOr extends Node {
-	
-	
-	
+public class NodeOr extends Node {	
 	public NodeOr() {
-		
-		super("or");
-		
-		
+		super("or");		
 	}
 
 	public boolean isConstant() {
@@ -18,7 +12,4 @@ public class NodeOr extends Node {
 	public boolean isPrimitiveBool() {
 		return true;
 	}
-
-	
-
 }

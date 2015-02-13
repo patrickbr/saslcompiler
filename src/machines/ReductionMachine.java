@@ -206,7 +206,7 @@ public abstract class ReductionMachine {
 
 				//S@(B@f@g)@(K@h)
 
-			} else if ((A instanceof NodeApply) &&(((NodeApply)A).getLeft() instanceof NodeApply && ((NodeApply)((NodeApply)A).getLeft()).getLeft() instanceof NodeB) && ((NodeApply)B).getLeft() instanceof NodeK) {
+			} else if ((A instanceof NodeApply) && (B instanceof NodeApply) && (((NodeApply)A).getLeft() instanceof NodeApply && ((NodeApply)((NodeApply)A).getLeft()).getLeft() instanceof NodeB) && ((NodeApply)B).getLeft() instanceof NodeK) {
 				Node g = ((NodeApply)A).getRight();
 				Node f = ((NodeApply)((NodeApply)A).getLeft()).getRight();
 				Node h = ((NodeApply)B).getRight();

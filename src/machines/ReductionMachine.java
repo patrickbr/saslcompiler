@@ -443,7 +443,7 @@ public abstract class ReductionMachine {
 			Node y =  reduce(nodeApply.getRight());
 
 			if (x instanceof NodeNil || y instanceof NodeNil) {
-				boolean val = x instanceof NodeNil &&  x instanceof NodeNil;
+				boolean val = x instanceof NodeNil && y instanceof NodeNil;
 
 				nodeApply.setLeft(new NodeI());
 				nodeApply.setRight(new NodeBool(val));

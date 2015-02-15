@@ -21,7 +21,7 @@ public class Tests {
 	 */
 	@Test
 	public void testBaseTests() throws Exception {
-
+                assertEquals(testFile("test/bool.sasl"),"23");
 		assertEquals(testFile("test/deftest.sasl"),"23");
 		assertEquals(testFile("test/deftest2.sasl"),"23");
 		assertEquals(testFile("test/recursionTest.sasl"),"23");

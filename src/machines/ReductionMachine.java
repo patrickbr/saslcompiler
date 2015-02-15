@@ -481,6 +481,10 @@ public abstract class ReductionMachine {
 				else nodeApply.setRight(new NodeApply(new NodeI(),new NodeBool(xNum.getStringContent().equals(yNum.getStringContent()) )));
 
 				nodeStack.push(nodeApply);
+			} else if (x instanceof NodePair) {
+				throw new ReduceException("Unsupported operants for equality operator (lists cannot be explicitly compared for equality.)");
+			} else {
+				 throw new ReduceException("Unsupported operants for equality operator.");
 			}
 		} 
 

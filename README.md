@@ -1,7 +1,7 @@
 SASL Compiler
 ============
 
-A compiler for SASL, a functional programming language developed in 1972 (http://en.wikipedia.org/wiki/SASL_(programming_language). Result of a student project at the University of Tübingen.
+A compiler for SASL, a functional programming language developed in 1972 (http://en.wikipedia.org/wiki/SASL_(programming_language). Result of a student project at the University of Tübingen. Development took part together with Benjamin Böhm.
 
 Usage
 =====

@@ -1,7 +1,7 @@
 SASL Compiler
 ============
 
-A compiler for SASL, a functional programming language developed in 1972 (http://en.wikipedia.org/wiki/SASL_(programming_language).
+A compiler for SASL, a functional programming language developed in 1972 (http://en.wikipedia.org/wiki/SASL_(programming_language). Result of a student project at the University of Tübingen.
 
 Usage
 =====
@@ -28,6 +28,8 @@ An example program outputting the first 5000 primes is included in this repo. St
 
 Examples
 ========
+
+A more thorough introduction to the language can be found on the manual page of the JavaScript port of this compiler: http://patrickbrosi.de/jsasl/manual.html
 
 Simple addition
 ---------------
